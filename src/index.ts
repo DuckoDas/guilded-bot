@@ -35,7 +35,7 @@ client.on("messageCreate", async (message: Message) => {
  * Auto React on message
  */
 client.on("messageCreate", async (message: Message) => {
-  if (message.author?.client) return;
+  if (message.author?.user.isBot) return;
 
   if (
     message.content?.includes("hi") ||
