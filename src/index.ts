@@ -1,4 +1,4 @@
-import { Client, Embed, Message } from "guilded.ts";
+import { Client, Embed, Message, MessageType } from "guilded.ts";
 import "dotenv/config";
 import { config } from "./config.js";
 
@@ -12,7 +12,7 @@ client.on("messageCreate", async (message: Message) => {
   const [commandName, ...args] = message.content
     .slice(config.prefix.length)
     .split(/\s+/);
-    
+
   switch (commandName) {
     case "referral":
       message.reply({
@@ -28,6 +28,32 @@ client.on("messageCreate", async (message: Message) => {
     case "echo":
       message.reply({ content: args.join(" ") });
       break;
+  }
+});
+
+/**
+ * Auto React on message
+ */
+client.on("messageCreate", async (message: Message) => {
+  if (message.author?.client) return;
+
+  if (
+    message.content?.includes("hi") ||
+    message.content?.includes("hey") ||
+    message.content?.includes("hello") ||
+    message.content?.includes("hei") ||
+    message.content?.includes("heyo")
+  ) {
+    return message.react(90002554);
+  } else if (
+    message.content?.includes("sus") ||
+    message.content?.includes("oreo") ||
+    message.content?.includes("bozo") ||
+    message.content?.includes("ratio") ||
+    message.content?.includes("daddy") ||
+    message.content?.includes("mommy")
+  ) {
+    return message.react(90002579);
   }
 });
 
