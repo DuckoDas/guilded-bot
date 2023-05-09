@@ -7,10 +7,9 @@
 ### Made With
 - [Node.js](https://nodejs.org)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Guilded.ts](https://guildedts.js.org/)
+- [Guilded.js](https://guildedts.js.org/)
 
 ### Join my socials!
 
-- [Guilded](https://guilded.gg/oreoland)
 - [Guilded Ref](https://www.guilded.gg?r=o4PyG3Zd)
 - [Discord](https://discord.gg/TKz7BMwEap)
