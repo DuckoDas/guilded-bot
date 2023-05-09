@@ -11,6 +11,5 @@
 
 ### Join my socials!
 
-- [Guilded](https://guilded.gg/oreoland)
 - [Guilded Ref](https://www.guilded.gg?r=o4PyG3Zd)
 - [Discord](https://discord.gg/TKz7BMwEap)
