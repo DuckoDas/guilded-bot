@@ -1,60 +1,35 @@
-import { Client, Embed, Message, MessageType } from "guilded.ts";
+import { Client } from "guilded.js";
 import "dotenv/config";
+import { Command, ConfigInterface, Event } from "./types/index.js";
+
 import { config } from "./config.js";
 
-const client = new Client({ token: process.env.GUILDED_TOKEN });
+import { registerCommands, registerEvents } from "./handler.js";
 
-client.once("ready", () => console.log(`Logged in as ${client.user?.name}!`));
-client.on("disconnect", () => console.log("Disconnected from Guilded"));
+export class GuildedClient extends Client {
+  public commands: Map<string, Command>;
+  public events: Map<string, Event>;
+  public config: ConfigInterface;
 
-client.on("messageCreate", async (message: Message) => {
-  if (!message.content?.startsWith(config.prefix)) return;
-  const [commandName, ...args] = message.content
-    .slice(config.prefix.length)
-    .split(/\s+/);
+  constructor() {
+    super({
+      token: process.env.GUILDED_TOKEN as string,
+    });
 
-  switch (commandName) {
-    case "referral":
-      message.reply({
-        content: [
-          `Please invite your friends with our referral link!`,
-          `[Referral Link](https://www.guilded.gg?r=o4PyG3Zd)`,
-        ].join("\n"),
-      });
-      break;
-    case "ping":
-      message.reply({ content: "Pong!" });
-      break;
-    case "echo":
-      message.reply({ content: args.join(" ") });
-      break;
+    this.commands = new Map();
+    this.events = new Map();
+    this.config = config;
   }
-});
 
-/**
- * Auto React on message
- */
-client.on("messageCreate", async (message: Message) => {
-  if (message.author?.user.isBot) return;
+  public initClient() {
+    registerCommands(this);
+    registerEvents(this);
 
-  if (
-    message.content?.includes("hi") ||
-    message.content?.includes("hey") ||
-    message.content?.includes("hello") ||
-    message.content?.includes("hei") ||
-    message.content?.includes("heyo")
-  ) {
-    return message.react(90002554);
-  } else if (
-    message.content?.includes("sus") ||
-    message.content?.includes("oreo") ||
-    message.content?.includes("bozo") ||
-    message.content?.includes("ratio") ||
-    message.content?.includes("daddy") ||
-    message.content?.includes("mommy")
-  ) {
-    return message.react(90002579);
+    this.login();
   }
-});
+}
 
-client.login();
+const GuildedBot = new GuildedClient
+GuildedBot.initClient();
+
+export { GuildedBot };

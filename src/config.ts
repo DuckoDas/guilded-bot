@@ -1,3 +1,3 @@
-import { ConfigInterface } from "./types/index";
+import { ConfigInterface } from "./types/index.js";
 
 export const config: ConfigInterface = { prefix: "?" };
