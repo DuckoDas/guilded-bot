@@ -7,7 +7,7 @@
 ### Made With
 - [Node.js](https://nodejs.org)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Guilded.ts](https://guildedts.js.org/)
+- [Guilded.js](https://guildedts.js.org/)
 
 ### Join my socials!
 
