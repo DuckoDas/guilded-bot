@@ -29,7 +29,7 @@ export class GuildedClient extends Client {
   }
 }
 
-const GuildedBot = new GuildedClient
+const GuildedBot = new GuildedClient();
 GuildedBot.initClient();
 
 export { GuildedBot };

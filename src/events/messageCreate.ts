@@ -33,7 +33,7 @@ const event: Event = {
 
     try {
       // Execute the command
-      command.execute(message, args, client);
+      command.execute(message, client, args);
     } catch (error) {
       console.error(error);
       message.reply("An error occurred while executing the command.");
