@@ -17,7 +17,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.1.0",
     "guilded.js": "^0.20.5"
   }
 }
